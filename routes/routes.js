@@ -89,6 +89,8 @@ router.get('/dashboard', isLoggedIn, function (req, res) {
       email: user.email
     };
   console.log('user data sent to dashboard on login', userdata);
+  console.log('the request session object', req.session);
+  console.log('the serialized user from passport', req.user);
 
   return res.status(200).render('pages/dashboard', {userdata: userdata});
 });

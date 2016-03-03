@@ -19,6 +19,8 @@ var userSockets = {};
 //-----------------------------------------------------------------------------
 io.on('connection', function (socket) {
   console.log('A client has connected');
+  console.log('the socket session object', socket.request.session);
+  console.log('the actual serialized user from passport', socket.request.session.passport.user);
   //store '_id' of connected user in order to access it easily
   var ID = socket.request.session.passport.user;
   //store actual socket of connected user in order to access it easily
