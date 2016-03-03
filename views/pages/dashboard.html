@@ -1,6 +1,7 @@
 <!--from /views/pages/dashboard -->
 <%- contentFor('dashboard head') %>
 <script src="/socket.io/socket.io.js"></script>
+<%- contentFor('dashboard body') %>
 <!--Main app structure -->
 <div id="app" class="col-md-9">
   <h1>Welcome to Express...!</h1>
@@ -9,19 +10,24 @@
     <li>Username: <%= userdata.username%></li>
     <li>Email: <%= userdata.email%></li>
   </ul>
+  <div id="data-from-socket"></div>
 </div>
-<div id="data-from-socket"></div>
 <script>
   var socket = io();
-  socket.on('connect', function (data) {
+  socket.on('connect', function () {
+    return console.log('Now connected to socket');
+  });
+  socket.on('welcome', function (data) {
+    console.log('received data from socket is', data);
     var
       firstName = data.firstName,
       lastName = data.lastName,
       socketDiv = document.getElementById('data-from-socket'),
       para = document.createElement('p'),
-      msg = 'Your full name is ' + firstName +' '+ lastName,
+      msg = 'Your full name is ' + firstName +' '+ lastName +'!',
       text = document.createTextNode(msg);
-    return p.appendChild(text);
+    para.appendChild(text);
+    return socketDiv.appendChild(para);
   });
   socket.on('disconnect', function () {
     var socketDiv = document.getElementById('data-from-socket');

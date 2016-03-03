@@ -33,6 +33,7 @@ io.on('connection', function (socket) {
       firstName: user.firstName,
       lastName: user.lastName
     };
+    console.log('sending additional data to dashboard', data);
     return socket.emit('welcome', data);
   });
   //on disconnect
