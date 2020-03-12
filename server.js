@@ -1,3 +1,6 @@
+/*ORIGINAL ARTICLE BY AUTHOR: 
+https://medium.com/@nohkachi/the-importance-of-documentation-or-how-i-discovered-how-to-share-express-sessions-with-socket-io-d8d2b6bd42e5 */
+
 'use strict';
 /**
 *Module dependencies
